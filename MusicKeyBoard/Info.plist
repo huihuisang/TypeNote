@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>MusicKeyBoard</string>
+    <key>CFBundleDisplayName</key>
+    <string>MusicKeyBoard</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.musickeyboard.app</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>14.0</string>
+    <key>NSInputMonitoringUsageDescription</key>
+    <string>MusicKeyBoard needs Input Monitoring permission to detect keyboard presses for playing musical notes, even when the app is in the background.</string>
+</dict>
+</plist>
