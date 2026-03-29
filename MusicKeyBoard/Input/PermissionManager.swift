@@ -21,7 +21,7 @@ struct PermissionManager {
     @discardableResult
     static func ensureAccessibility() -> Bool {
         let options: NSDictionary = [
-            kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true
+            kAXTrustedCheckOptionPrompt as String: true
         ]
         return AXIsProcessTrustedWithOptions(options)
     }

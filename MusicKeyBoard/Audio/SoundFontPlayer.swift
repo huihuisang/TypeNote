@@ -10,8 +10,8 @@ final class SoundFontPlayer {
         engine.attach(sampler)
         engine.connect(sampler, to: engine.mainMixerNode, format: nil)
         setBufferSize(256)
-        try engine.start()
         try loadDefaultInstrument()
+        try engine.start()
     }
 
     /// Load a General MIDI instrument from the bundled SoundFont.

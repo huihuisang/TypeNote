@@ -22,8 +22,14 @@ struct JianpuParser {
     /// Root MIDI note of the key. C4 = 60, D4 = 62, G4 = 67, etc.
     let key: UInt8
 
-    /// Tempo in beats per minute.
+    /// Tempo in beats per minute. Must be positive.
     let tempo: Double
+
+    init(key: UInt8, tempo: Double) {
+        precondition(tempo > 0, "Tempo must be positive")
+        self.key = key
+        self.tempo = tempo
+    }
 
     /// Duration of one quarter note in seconds.
     private var quarterDuration: TimeInterval { 60.0 / tempo }

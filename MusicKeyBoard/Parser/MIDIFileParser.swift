@@ -54,7 +54,8 @@ struct MIDIFileParser {
                 ) == noErr else { break }
 
                 if eventType == kMusicEventType_MIDINoteMessage,
-                   let data = eventData {
+                   let data = eventData,
+                   eventDataSize >= UInt32(MemoryLayout<MIDINoteMessage>.size) {
                     let noteMessage = data.load(as: MIDINoteMessage.self)
                     let durationSeconds = Double(noteMessage.duration) * (60.0 / tempo)
                     notes.append(.note(

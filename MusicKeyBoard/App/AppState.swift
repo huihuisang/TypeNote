@@ -54,6 +54,11 @@ final class AppState {
         setupLocalMonitor()
     }
 
+    deinit {
+        removeLocalMonitor()
+        globalMonitor.stop()
+    }
+
     // MARK: - Audio Setup
 
     private func setupAudio() {

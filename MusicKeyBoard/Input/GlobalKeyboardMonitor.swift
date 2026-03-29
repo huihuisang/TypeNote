@@ -6,6 +6,7 @@ import Carbon
 final class GlobalKeyboardMonitor {
     private var eventTap: CFMachPort?
     private var runLoopSource: CFRunLoopSource?
+    private var retainedSelf: Unmanaged<GlobalKeyboardMonitor>?
 
     var onKeyDown: ((Int64) -> Void)?
     var onKeyUp: ((Int64) -> Void)?
@@ -15,7 +16,11 @@ final class GlobalKeyboardMonitor {
 
         let eventMask: CGEventMask = (1 << CGEventType.keyDown.rawValue)
                                    | (1 << CGEventType.keyUp.rawValue)
-        let userInfo = Unmanaged.passRetained(self).toOpaque()
+
+        // Retain self for the duration of the event tap lifetime.
+        // Released explicitly in stop().
+        let retained = Unmanaged.passRetained(self)
+        let userInfo = retained.toOpaque()
 
         guard let tap = CGEvent.tapCreate(
             tap: .cgSessionEventTap,
@@ -49,10 +54,24 @@ final class GlobalKeyboardMonitor {
                 return Unmanaged.passUnretained(event)
             },
             userInfo: userInfo
-        ) else { return }
+        ) else {
+            // Tap creation failed — release the retained reference
+            retained.release()
+            return
+        }
 
+        retainedSelf = retained
         eventTap = tap
-        let source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tap, 0)!
+
+        guard let source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tap, 0) else {
+            // Clean up if run loop source creation fails
+            CFMachPortInvalidate(tap)
+            eventTap = nil
+            retainedSelf?.release()
+            retainedSelf = nil
+            return
+        }
+
         runLoopSource = source
         CFRunLoopAddSource(CFRunLoopGetMain(), source, .commonModes)
         CGEvent.tapEnable(tap: tap, enable: true)
@@ -67,6 +86,10 @@ final class GlobalKeyboardMonitor {
         }
         eventTap = nil
         runLoopSource = nil
+
+        // Balance the passRetained from start()
+        retainedSelf?.release()
+        retainedSelf = nil
     }
 
     deinit {

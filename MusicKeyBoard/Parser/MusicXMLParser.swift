@@ -12,6 +12,8 @@ class MusicXMLParser: NSObject, XMLParserDelegate {
     private var currentText = ""
     private var inNote = false
     private var inPitch = false
+    private var inDirection = false
+    private var inSound = false
     private var isRest = false
     private var step = "C"
     private var alter = 0
@@ -64,6 +66,14 @@ class MusicXMLParser: NSObject, XMLParserDelegate {
             inPitch = true
         case "rest":
             isRest = true
+        case "direction":
+            inDirection = true
+        case "sound":
+            // MusicXML stores tempo in <sound tempo="120"/> within <direction>
+            if let tempoStr = attributes["tempo"],
+               let parsedTempo = Double(tempoStr), parsedTempo > 0 {
+                tempo = parsedTempo
+            }
         default:
             break
         }
@@ -86,8 +96,15 @@ class MusicXMLParser: NSObject, XMLParserDelegate {
             if inPitch { octave = Int(currentText) ?? 4 }
         case "duration":
             if inNote { duration = Int(currentText) ?? 0 }
+        case "per-minute":
+            // Also handle <per-minute>120</per-minute> inside <metronome>
+            if let parsedTempo = Double(currentText), parsedTempo > 0 {
+                tempo = parsedTempo
+            }
         case "pitch":
             inPitch = false
+        case "direction":
+            inDirection = false
         case "note":
             let seconds = Double(duration) / Double(divisions) * (60.0 / tempo)
 
