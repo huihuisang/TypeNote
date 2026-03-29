@@ -78,10 +78,15 @@ final class AppState {
 
         localKeyDownMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
             [weak self] event in
+            // Pass through events with modifier keys (Cmd+Q, Cmd+C, etc.)
+            if event.modifierFlags.intersection([.command, .control, .option]).isEmpty == false {
+                return event
+            }
             guard !event.isARepeat else { return event }
             let chars = event.charactersIgnoringModifiers?.lowercased() ?? ""
-            self?.handleKeyDown(chars)
-            return nil // Swallow the event to prevent system beep
+            guard let self, self.isMappedKey(chars) else { return event }
+            self.handleKeyDown(chars)
+            return nil // Swallow only mapped keys to prevent system beep
         }
 
         localKeyUpMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyUp) {
@@ -131,6 +136,16 @@ final class AppState {
     }
 
     // MARK: - Key Handling
+
+    /// Returns true if the character is mapped to a note in the current mode.
+    func isMappedKey(_ chars: String) -> Bool {
+        switch keyMappingMode {
+        case .sequential:
+            return currentNoteIndex < score.count
+        case .mapped:
+            return keyMappings[chars] != nil
+        }
+    }
 
     func handleKeyDown(_ chars: String) {
         guard !chars.isEmpty, audioReady else { return }
