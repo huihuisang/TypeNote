@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>TypeNote</title>
+        <link>https://raw.githubusercontent.com/huihuisang/TypeNote/main/appcast.xml</link>
+        <description>TypeNote release notes</description>
+        <language>en</language>
+
+        <!-- =========================================================
+             HOW TO ADD A NEW RELEASE
+             1. Build & Archive in Xcode (Product → Archive)
+             2. Distribute with "Direct Distribution" + Notarize
+             3. Export the .dmg, run:
+                  ./bin/generate_appcast /path/to/your/releases/folder
+                or fill in the fields below manually.
+             ========================================================= -->
+        <item>
+            <title>Version 1.0</title>
+            <sparkle:releaseNotesLink>https://github.com/huihuisang/TypeNote/releases/tag/v1.0</sparkle:releaseNotesLink>
+            <pubDate>日, 19  4月 2026 01:06:06 +0000</pubDate>
+            <enclosure
+                url="https://github.com/huihuisang/TypeNote/releases/download/v1.0/TypeNote-1.0.dmg"
+                sparkle:version="1"
+                sparkle:shortVersionString="1.0"
+                length="36497802"
+                type="application/octet-stream"
+                sparkle:edSignature="RPLNGnsU1jlFw6iECeRW9JAIjkQNONrhmHdwCeKj/IVDzys2aLaCQPzQa9ouj6HnyeCRRPCvmcb04qc6w7ueAQ=="
+            />
+        </item>
+        <item>
+            <title>Version 1.0</title>
+            <sparkle:releaseNotesLink>https://github.com/huihuisang/TypeNote/releases/tag/v1.0</sparkle:releaseNotesLink>
+            <pubDate>三, 15  4月 2026 15:55:07 +0000</pubDate>
+            <enclosure
+                url="https://github.com/huihuisang/TypeNote/releases/download/v1.0/TypeNote-1.0.dmg"
+                sparkle:version="1"
+                sparkle:shortVersionString="1.0"
+                length="36497731"
+                type="application/octet-stream"
+                sparkle:edSignature="VU05ZXykEp4EIYl/lfA1Brp5QKnpjhoeONVAkV8EOy3hZofNwYyKRlTA0fEK5iTvne7AJ2Zrqk9D1RXgKw3kBA=="
+            />
+        </item>
+
+        <item>
+            <title>Version 1.0</title>
+            <sparkle:releaseNotesLink>
+                https://github.com/huihuisang/TypeNote/releases/tag/v1.0
+            </sparkle:releaseNotesLink>
+            <pubDate>Mon, 14 Apr 2026 00:00:00 +0000</pubDate>
+            <enclosure
+                url="https://github.com/huihuisang/TypeNote/releases/download/v1.0/TypeNote-1.0.dmg"
+                sparkle:version="1"
+                sparkle:shortVersionString="1.0"
+                length="0"
+                type="application/octet-stream"
+                sparkle:edSignature="REPLACE_WITH_ED_SIGNATURE"
+            />
+        </item>
+
+    </channel>
+</rss>

@@ -1,0 +1,77 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "TypeNote"
+          }
+        }
+      }
+    },
+    "NSHumanReadableCopyright" : {
+      "comment" : "Copyright (human-readable)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "NSInputMonitoringUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TypeNote benötigt die Eingabeüberwachungsberechtigung, um Tastatureingaben zu erkennen und Musiknoten zu spielen, auch wenn die App im Hintergrund läuft."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TypeNote needs Input Monitoring permission to detect keyboard presses for playing musical notes, even when the app is in the background."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TypeNote a besoin de la permission de surveillance des entrées pour détecter les touches du clavier et jouer des notes musicales, même lorsque l'application est en arrière-plan."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TypeNote ha bisogno dell'autorizzazione per il monitoraggio degli input per rilevare le pressioni dei tasti e suonare note musicali, anche quando l'app è in background."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TypeNote は、バックグラウンドでも音符を演奏するためにキーボードを検出する入力監視権限が必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TypeNote는 앱이 백그라운드에 있을 때도 음표를 연주하기 위해 키보드 입력을 감지하는 입력 모니터링 권한이 필요합니다."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TypeNote 需要输入监控权限，以便在应用后台运行时检测键盘按键，用于演奏音符。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
