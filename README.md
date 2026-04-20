@@ -19,6 +19,7 @@ TypeNote is a native macOS menu bar app that turns every keystroke into a musica
 ## Features
 
 - **128 Timbres** — Full General MIDI library organized by mood. Switch from acoustic piano to steel drums in two clicks
+- **Bring Your Own SoundFont** — Drop in any `.sf2` file (FluidR3, MuseScore General, Timbres of Heaven…) to expand beyond the bundled library. See [Free SoundFont Resources](docs/free-soundfonts.md)
 - **Bring Your Own Melody** — Paste numbered notation (Jianpu), import MusicXML, or drop a MIDI file. Your keystrokes play the notes in sequence
 - **Menu Bar Resident** — No windows to manage. Open it to change the sound, close it, keep working
 - **Low Latency** — AVAudioEngine + 256-frame buffer, key-to-sound < 15 ms
