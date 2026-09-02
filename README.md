@@ -6,6 +6,8 @@ TypeNote is a native macOS menu bar app that turns every keystroke into a musica
 
 **[Download for macOS →](https://github.com/huihuisang/TypeNote/releases/latest)**
 
+**[Official site →](https://typenote.ajigu.com/)** · Guides, sound demos, and FAQ.
+
 ---
 
 ## Screenshots
